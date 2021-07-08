@@ -38,9 +38,9 @@ db = firestore.Client(credentials=creds, project="custom-temple-312913") #Use Pr
 #Pronostico-de-Heladas-Batallas
 
 forcast_collection = db.collection('Forecasts')
+timezone_diff= timedelta(hours = 4)
 
-
-now = datetime.now()
+now = datetime.now() - timezone_diff
 if now.minute < 3:
     now = now -timedelta(hours=1)
 doc = forcast_collection.document(now.strftime('%Y%m%d%H00'))  # specifies the '202103171800' document
@@ -48,7 +48,7 @@ values = doc.get().to_dict()
 
 offset = timedelta(hours = 1)
 two_days_offset = timedelta(hours = 48) 
-before = datetime.now() - two_days_offset 
+before = datetime.now() - two_days_offset -timezone_diff
 measured_range = pd.date_range(start= before+offset,periods = 48,freq='h')
 forecasted_range = pd.date_range(start= now+offset,periods = 24,freq='h')
 measured = pd.DataFrame(values['measured'][::-1],index = pd.to_datetime(measured_range.strftime('%Y%m%d%H00')))

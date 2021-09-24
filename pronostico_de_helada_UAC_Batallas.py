@@ -170,7 +170,7 @@ fig_owm,_=make_forecast_plot(measured_owm,forecasted_owm)
 
 img, Logo =st.columns((3,1))
 
-st.title('Sistema de pronostico y alerta temprana ante heladas')
+st.title('Sistema de pronóstico y alerta temprana ante heladas')
 Logo.image(image, use_column_width=True)
 img.image(image2, use_column_width=True)
 
@@ -184,17 +184,17 @@ col2.metric("Temperatura Mínima  Pronosticada", str(round(np.min(forecasted[0])
 col1.metric("Temperatura Promedio", str(round(np.mean(measured[0]),2))+" °C")
 col2.metric("Temperatura Mínima  Registrada",  str(round(np.min(measured[0]),2))+" °C")
 
-st.header("Grafico del pronóstico de la temperatura : UAC Batallas")
+st.header("Gráfico del pronóstico de la temperatura : UAC Batallas")
 st.plotly_chart(fig)
 
 st.markdown(":information_source:")
-info = st.button('Haga clic aquí para obtener más información sobre el grafico')
+info = st.button('Haga clic aquí para obtener más información sobre el gráfico')
 if info:
     st.write('El gráfico muestra principalmente dos áreas: La parte de la izquierda, con fondo azul, muestra los valores de temperatura medidos en las 48 horas anteriores (línea azul).')
     st.write('La parte de la derecha, con fondo rosa claro, muestra la previsión de temperatura para las próximas 24 horas (línea roja), esta parte también contiene el intervalo de confianza para la previsión esta representa los posibles valores de la previsión considerando los errores pasados.')
     st.write('En la parte inferior se marca una linea punteada negra alrededor de los 0 grados Celsius, este representa el punto en que la temperatura hace referencia a un evento de helada.')
     st.write('El punto en que la linea que representa la temperatura cambia de azul a rojo, da a conocer la hora en que se ha producido una actualización del pronóstico. Esta ocurre con una frecuencia de una hora.')
-    if st.button('Ocultar Informacion'):
+    if st.button('Ocultar Información'):
         info = False
 else:
     pass
@@ -208,9 +208,9 @@ Info_heladas.write("El daño se produce cuando la temperatura del tejido de las 
 st.header("Tabla de rangos de temperatura para la agricultura local")
 info_foto.image(image3, use_column_width=True)
 
-critic_temperatures  = pd.DataFrame({'Temperatura Optima [°C]': ["Entre 4 y 8", "Entre 9 y 16", "Entre 12 y 23","Entre 5 y 20"],
+critic_temperatures  = pd.DataFrame({'Temperatura Óptima [°C]': ["Entre 4 y 8", "Entre 9 y 16", "Entre 12 y 23","Entre 5 y 20"],
                    
-                   "Temperatura Critica [°C]": [" Menor a 1 "," Menor a -8 y Mayor a 26","Menor a 0","Menor a 0 Mayor a 30" ],
+                   "Temperatura Crítica [°C]": [" Menor a 1 "," Menor a -8 y Mayor a 26","Menor a 0","Menor a 0 Mayor a 30" ],
                    "Temperatura Letal [°C]":["Menor a -7","Menor a -11 y Mayor a 30","Menor a -2","Menor a -4"]},
                   index=['Papa', 'Quinua',"Cebolla","Haba"])
 
@@ -222,7 +222,7 @@ project_foto.image(image4.transpose(Image.ROTATE_90), use_column_width=True)
 Info_project.header("Sistema propuesto")
 Info_project.write("El sistema propuesto cuenta de tres elementos: la adquisición de datos meteorológicos, el almacenamiento y procesamiento de los datos y los medios de notificación de alerta.")
 Info_project.write("Mediante una Estacion meteorológica implementada en la granja de la UAC Batallas es que se toma las mediciones de temperatura y humedad. De manera auxiliar también son recolectadas las mismas variables a través del la plataforma de Open Weather Map.")
-Info_project.write("Los datos recolectados son empleados como entrada a una red neuronal profunda. Esto permite realizar el pronostico de la temperatura ambiente para las proximás 24 horas.")
+Info_project.write("Los datos recolectados son empleados como entrada a una red neuronal profunda. Esto permite realizar el pronóstico de la temperatura ambiente para las próximas 24 horas.")
 Info_project.write("Los resultados obtenidos son desplegados en esta página web. Adicionalmente si es que un evento de helada ha sido pronosticado, una alerta mediante SMS es enviada.")
 Info_project.write("El objetivo del proyecto es poder brindar de mayor información al agricultor respecto a la posible ocurrencia de un evento de helada. Esto con el fin de que se puedan realizar las medidas de protección de manera más oportuna.")
 
@@ -246,8 +246,8 @@ freq_foto.image(image5, use_column_width=True)
 
 
 st.header("Grafico del pronóstico de la temperatura : UAC Batallas (OWM)") 
-st.write("De manera auxiliar se recolectan las variables de temperatura ambiente y humedad del servicio publico de meteorología de Open WeatherMap")
-st.write("Esto permite tener un respaldo en caso de que alguna falla en el sistema, si bien estos datos son similares a los del área de estudio, no son muy precisos al respecto. Use la información provista por este grafico con precaución.")
+st.write("De manera auxiliar se recolectan las variables de temperatura ambiente y humedad del servicio público de meteorología de Open WeatherMap")
+st.write("Esto permite tener un respaldo en caso de que alguna falla en el sistema, si bien estos datos son similares a los del área de estudio, no son muy precisos al respecto. Use la información provista por este gráfico con precaución.")
 
 st.plotly_chart(fig_owm)
 
@@ -291,7 +291,7 @@ try:
 
     st.plotly_chart(fig2)
 except:
-    st.info('No se pudo encontrar los datos necesarios para desplegar el grafico, intenta otra fecha.')
+    st.info('No se pudo encontrar los datos necesarios para desplegar el gráfico, intenta otra fecha.')
 
 st.subheader('Pronóstico de la temperatura : Batallas (Open WeatherMap)')
 try:
@@ -305,7 +305,7 @@ try:
                                            xanchor="right",  x=1))
     st.plotly_chart(fig3)
 except:
-    st.info('No se pudo encontrar los datos necesarios para desplegar el grafico, intenta otra fecha.')
+    st.info('No se pudo encontrar los datos necesarios para desplegar el gráfico, intenta otra fecha.')
 
 _,imt_logo,_=st.columns(3)
 imt_logo.image(image6, use_column_width=True)
